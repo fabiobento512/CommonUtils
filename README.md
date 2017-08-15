@@ -1,2 +1,2 @@
 # CommonUtils
-Common C++ Utils for random-guy projects
+Common C++ Qt Utils for random-guy projects
