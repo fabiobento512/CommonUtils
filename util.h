@@ -13,25 +13,29 @@
 #ifdef QT_DEBUG
 #include <QDebug>
 #endif
+#include <QRegularExpression>
 #include <QString>
+#include <QUrl>
+#include <QCoreApplication>
+#include <QSettings>
+#include <QXmlStreamReader>
+#include <memory>
+#include <QDirIterator>
+#include <QCryptographicHash>
+#include <string.h>
+
+#ifdef QT_GUI_LIB
 #include <QMessageBox>
 #include <QFileDialog>
 #include <QListView>
 #include <QTreeView>
 #include <QDesktopServices>
-#include <QUrl>
-#include <QCoreApplication>
 #include <QDesktopWidget>
-#include <QSettings>
-#include <QXmlStreamReader>
-#include <memory>
+#include <QStatusBar>
 #include <QTableWidget>
 #include <QCheckBox>
 #include <QHBoxLayout>
-#include <QDirIterator>
-#include <QCryptographicHash>
-#include <QStatusBar>
-#include <string.h>
+#endif
 
 /**
   Utilities functions (global)
@@ -60,6 +64,8 @@ QString fileHash(const QString &fileName, QCryptographicHash::Algorithm hashAlgo
 
 QString getAppPath();
 
+bool backupFile(QString file);
+
 }
 
 namespace String {
@@ -86,6 +92,7 @@ const char* boolToCstr(bool currentBoolean);
 
 }
 
+#ifdef QT_GUI_LIB
 namespace Dialogs {
 
 void showInfo(const QString &message);
@@ -105,6 +112,7 @@ QMessageBox::StandardButton showQuestionWithCancel(QWidget * parent, QString mes
 QStringList multipleDirSelection(const QString &title);
 
 }
+#endif
 
 namespace Validation {
 
@@ -116,6 +124,7 @@ bool isStringDouble(QString myString);
 
 }
 
+#ifdef QT_GUI_LIB
 namespace TableWidget {
 
 void addRow(QTableWidget *myTable, QStringList &columns);
@@ -130,17 +139,23 @@ void swapRows(QTableWidget *myTable, const int indexSourceRow, const int indexDe
 void deleteSelectedRows(QTableWidget *myTable);
 
 }
+#endif
 
 namespace System {
+#ifdef QT_GUI_LIB
 QRect getScreenResolution();
+#endif
 }
 
+#ifdef QT_GUI_LIB
 namespace StatusBar {
 
 void showError(QStatusBar * const statusBar, const QString &message);
 void showSuccess(QStatusBar * const  statusBar,const QString &message);
 
 }
+#endif
+
 
 }
 #endif // UTIL_H

@@ -180,6 +180,10 @@ QString getAppPath(){
 #endif
 }
 
+bool backupFile(QString file){
+    return QFile::copy(file,file+".bak");
+}
+
 }
 
 namespace String {
@@ -253,6 +257,7 @@ const char* boolToCstr(bool currentBoolean){
 
 }
 
+#ifdef QT_GUI_LIB
 namespace Dialogs {
 
 void showInfo(const QString &message){
@@ -322,6 +327,7 @@ QStringList multipleDirSelection(const QString &title){
 }
 
 }
+#endif
 
 namespace Validation {
 
@@ -373,14 +379,17 @@ bool isStringDouble(QString myString){
 
 namespace System {
 
+#ifdef QT_GUI_LIB
 // From here: http://stackoverflow.com/questions/17893328/qt-getting-the-screen-resolution-without-the-extended-monitor ty Chris
 QRect getScreenResolution(){
     QDesktopWidget widget;
     return widget.availableGeometry(widget.primaryScreen()); // or screenGeometry(), depending on your needs
 }
+#endif
 
 }
 
+#ifdef QT_GUI_LIB
 namespace TableWidget {
 
 
@@ -518,7 +527,9 @@ void deleteSelectedRows(QTableWidget *myTable){
 }
 
 }
+#endif
 
+#ifdef QT_GUI_LIB
 namespace StatusBar {
 
 void showError(QStatusBar * const statusBar, const QString &message){
@@ -540,9 +551,10 @@ void showSuccess(QStatusBar * const statusBar,const QString &message){
 }
 
 }
-
+#endif
 
 }
+
 
 /**
  * Copyright (c) 2017 - Fábio Bento (random-guy)
