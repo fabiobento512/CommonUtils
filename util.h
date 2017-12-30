@@ -64,7 +64,7 @@ QString fileHash(const QString &fileName, QCryptographicHash::Algorithm hashAlgo
 
 QString getAppPath();
 
-bool backupFile(QString file);
+bool backupFile(const QString &file, QString newFilename="");
 
 }
 

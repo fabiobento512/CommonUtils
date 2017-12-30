@@ -68,7 +68,7 @@ bool rmDir(const QString &dirPath)
     QDir dir(dirPath);
     if (!dir.exists())
         return true;
-    foreach(const QFileInfo &info, dir.entryInfoList(QDir::Dirs | QDir::Files | QDir::NoDotAndDotDot)) {
+    for(const QFileInfo &info : dir.entryInfoList(QDir::Dirs | QDir::Files | QDir::NoDotAndDotDot)) {
         if (info.isDir()) {
             if (!rmDir(info.filePath()))
                 return false;
@@ -180,8 +180,13 @@ QString getAppPath(){
 #endif
 }
 
-bool backupFile(QString file){
-    return QFile::copy(file,file+".bak");
+bool backupFile(const QString &file, QString newFilename){
+	
+	if(newFilename.isEmpty()){
+		newFilename = file;
+	}
+	
+    return QFile::copy(file, newFilename+".bak");
 }
 
 }
@@ -333,7 +338,7 @@ namespace Validation {
 
 // Check if any string in the list is empty
 bool checkEmptySpaces(QStringList toCheck){
-    foreach (QString current, toCheck){
+    for (const QString &current : toCheck){
         if(current.trimmed().isEmpty()){
             return true; //There are empty spaces
         }
@@ -342,7 +347,7 @@ bool checkEmptySpaces(QStringList toCheck){
 }
 
 bool checkIfIntegers(QStringList toCheck){
-    foreach (QString current, toCheck){
+    for (const QString &current : toCheck){
         if(!isStringInteger(current)){
             return true; // Some aren't valid integers
         }
@@ -351,7 +356,7 @@ bool checkIfIntegers(QStringList toCheck){
 }
 
 bool checkIfDoubles(QStringList toCheck){
-    foreach (QString current, toCheck){
+    for (const QString &current : toCheck){
         if(!isStringDouble(current)){
             return true; // Some aren't valid doubles
         }
