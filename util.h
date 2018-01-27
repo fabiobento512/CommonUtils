@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 - Fábio Bento (random-guy)
+ * Copyright (C) 2017 - 2018 Fábio Bento (random-guy)
  *
  * This library is distributed under the MIT License. See notice at the end
  * of this file.
@@ -150,6 +150,7 @@ QRect getScreenResolution();
 #ifdef QT_GUI_LIB
 namespace StatusBar {
 
+void showInfo(QStatusBar * const statusBar, const QString &message);
 void showError(QStatusBar * const statusBar, const QString &message);
 void showSuccess(QStatusBar * const  statusBar,const QString &message);
 
@@ -161,7 +162,7 @@ void showSuccess(QStatusBar * const  statusBar,const QString &message);
 #endif // UTIL_H
 
 /**
- * Copyright (c) 2017 - Fábio Bento (random-guy)
+ * Copyright (c) 2017 - 2018 Fábio Bento (random-guy)
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation

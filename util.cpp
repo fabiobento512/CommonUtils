@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 - Fábio Bento (random-guy)
+ * Copyright (C) 2017 - 2018 Fábio Bento (random-guy)
  *
  * This library is distributed under the MIT License. See notice at the end
  * of this file.
@@ -537,6 +537,15 @@ void deleteSelectedRows(QTableWidget *myTable){
 #ifdef QT_GUI_LIB
 namespace StatusBar {
 
+void showInfo(QStatusBar * const statusBar, const QString &message){
+
+    QPalette myPalete = QPalette();
+    myPalete.setColor( QPalette::WindowText, QColor(0,38,255));
+    statusBar->setPalette( myPalete );
+    statusBar->showMessage(message,10000); //display by 10 seconds
+
+}
+
 void showError(QStatusBar * const statusBar, const QString &message){
 
     QPalette myPalete = QPalette();
@@ -562,7 +571,7 @@ void showSuccess(QStatusBar * const statusBar,const QString &message){
 
 
 /**
- * Copyright (c) 2017 - Fábio Bento (random-guy)
+ * Copyright (c) 2017 - 2018 Fábio Bento (random-guy)
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
