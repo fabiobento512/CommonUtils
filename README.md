@@ -1,2 +1,2 @@
 # CommonUtils
-Common C++ Qt Utils for random-guy projects
+Common C++ Qt Utils for fabiobento512 projects
