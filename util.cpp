@@ -265,37 +265,31 @@ const char* boolToCstr(bool currentBoolean){
 #ifdef QT_GUI_LIB
 namespace Dialogs {
 
-void showInfo(const QString &message){
+void showInfo(const QString &message, const bool richText){
     QMessageBox msgBox;
+	if(richText){
+		msgBox.setTextFormat(Qt::RichText);
+	}
     msgBox.setIcon(QMessageBox::Information);
     msgBox.setText(message);
     msgBox.exec();
 }
 
-void showRichInfo(const QString &message){
+void showWarning(const QString &message, const bool richText){
     QMessageBox msgBox;
-    msgBox.setTextFormat(Qt::RichText);
-    msgBox.setIcon(QMessageBox::Information);
-    msgBox.setText(message);
-    msgBox.exec();
-}
-
-void showWarning(const QString &message){
-    QMessageBox msgBox;
+	if(richText){
+		msgBox.setTextFormat(Qt::RichText);
+	}
     msgBox.setIcon(QMessageBox::Warning);
     msgBox.setText(message);
     msgBox.exec();
 }
 
-void showError(const QString &message){
+void showError(const QString &message, const bool richText){
     QMessageBox msgBox;
-    msgBox.setIcon(QMessageBox::Critical);
-    msgBox.setText(message);
-    msgBox.exec();
-}
-
-void showRichError(const QString &message){
-    QMessageBox msgBox;
+	if(richText){
+		msgBox.setTextFormat(Qt::RichText);
+	}
     msgBox.setIcon(QMessageBox::Critical);
     msgBox.setText(message);
     msgBox.exec();

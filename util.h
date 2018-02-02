@@ -95,15 +95,11 @@ const char* boolToCstr(bool currentBoolean);
 #ifdef QT_GUI_LIB
 namespace Dialogs {
 
-void showInfo(const QString &message);
+void showInfo(const QString &message, const bool richText = false);
 
-void showRichInfo(const QString &message);
+void showWarning(const QString &message, const bool richText = false);
 
-void showWarning(const QString &message);
-
-void showError(const QString &message);
-
-void showRichError(const QString &message);
+void showError(const QString &message, const bool richText = false);
 
 bool showQuestion(QWidget * parent, QString message, QMessageBox::StandardButton standardButton=QMessageBox::NoButton);
 
