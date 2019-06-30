@@ -124,6 +124,7 @@ bool isStringDouble(QString myString);
 namespace TableWidget {
 
 void addRow(QTableWidget *myTable, QStringList &columns);
+void addDisabledRow(QTableWidget *myTable, QStringList &columns);
 QModelIndexList getSelectedRows(QTableWidget *myTable);
 QModelIndexList getCurrentRows(QTableWidget *myTable);
 int getNumberSelectedRows(QTableWidget *myTable);

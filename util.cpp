@@ -402,11 +402,28 @@ void addRow(QTableWidget *myTable, QStringList &columns){
     //Add to table and list to
     for(int i=0; i<columns.size(); i++){
         QTableWidgetItem *newColumn = new QTableWidgetItem(columns[i]);
+
         myTable->setItem(twSize,i,newColumn);
         // Add a tooltip with with the cell content
         myTable->item(twSize,i)->setToolTip(myTable->item(twSize,i)->text());
     }
+}
 
+void addDisabledRow(QTableWidget *myTable, QStringList &columns){
+    //Get actual number rows
+    int twSize=myTable->rowCount();
+
+    //increase the rows for the new item
+    myTable->setRowCount(twSize+1);
+
+    //Add to table and list to
+    for(int i=0; i<columns.size(); i++){
+        QTableWidgetItem *newColumn = new QTableWidgetItem(columns[i]);
+        newColumn->setFlags(Qt::NoItemFlags);
+        myTable->setItem(twSize,i,newColumn);
+        // Add a tooltip with with the cell content
+        myTable->item(twSize,i)->setToolTip(myTable->item(twSize,i)->text());
+    }
 }
 
 
