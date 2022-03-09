@@ -70,10 +70,8 @@ bool backupFile(const QString &file, QString newFilename="");
 
 namespace String {
 
-// Not using a function because we need to have this as inline function (in both debug and release mods)
-// QString(string).toUtf8().constData() -> since this creates a temporary it needs to be inline
-#ifndef QSTR_TO_CSTR
-#  define QSTR_TO_CSTR qUtf8Printable
+#ifndef QSTR_TO_TEMPORARY_CSTR
+#  define QSTR_TO_TEMPORARY_CSTR qUtf8Printable
 #endif
 
 QString insertApostrophes(const QString &currString);
