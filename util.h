@@ -9,32 +9,16 @@
 #ifndef UTIL_H
 #define UTIL_H
 
-#include <QtGlobal> // for debug macros
-#ifdef QT_DEBUG
-#include <QDebug>
-#endif
-#include <QRegularExpression>
 #include <QString>
-#include <QUrl>
 #include <QCoreApplication>
-#include <QSettings>
-#include <QXmlStreamReader>
-#include <memory>
-#include <QDirIterator>
 #include <QCryptographicHash>
-#include <string.h>
 
 #ifdef QT_GUI_LIB
 #include <QMessageBox>
 #include <QFileDialog>
-#include <QListView>
-#include <QTreeView>
 #include <QDesktopServices>
-#include <QDesktopWidget>
 #include <QStatusBar>
 #include <QTableWidget>
-#include <QCheckBox>
-#include <QHBoxLayout>
 #endif
 
 /**

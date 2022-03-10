@@ -8,6 +8,29 @@
 
 #include "util.h"
 
+#ifdef QT_DEBUG
+#include <QtGlobal> // for debug macros
+#include <QDebug>
+#endif
+
+#include <QRegularExpression>
+#include <QUrl>
+#include <QSettings>
+#include <QXmlStreamReader>
+#include <QDirIterator>
+#include <memory>
+#include <string.h>
+
+#ifdef QT_GUI_LIB
+#include <QCheckBox>
+#include <QHBoxLayout>
+#include <QScreen>
+#include <QGuiApplication>
+#include <QDesktopWidget>
+#include <QListView>
+#include <QTreeView>
+#endif
+
 namespace Util{
 
 namespace FileSystem {
@@ -379,10 +402,8 @@ bool isStringDouble(QString myString){
 namespace System {
 
 #ifdef QT_GUI_LIB
-// From here: http://stackoverflow.com/questions/17893328/qt-getting-the-screen-resolution-without-the-extended-monitor ty Chris
 QRect getScreenResolution(){
-    QDesktopWidget widget;
-    return widget.availableGeometry(widget.primaryScreen()); // or screenGeometry(), depending on your needs
+    return qApp->primaryScreen()->availableGeometry();
 }
 #endif
 
